@@ -15,7 +15,9 @@ const Nav = () => {
 
   return (
     <nav>
-      <Button colorScheme={'transparent'} onClick={() => console.log("Does nothing yet")} >Dashboard</Button>
+      <div id="navTitle">
+        <Button style={{ fontSize: 20 }} colorScheme={'transparent'} onClick={() => console.log("Does nothing yet")} >Dashboard</Button>
+      </div>
       <Button colorScheme={'transparent'} onClick={() => setAuthStatus("anonymous")} >Sign Out</Button>
 
       <style jsx>{`
@@ -25,6 +27,7 @@ const Nav = () => {
         align-items:center;
         background-color:#147098;
       }
+      #navTitle button{font-size:20px;}
     `}</style>
     </nav>
   )

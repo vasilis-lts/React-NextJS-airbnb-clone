@@ -2,66 +2,55 @@ import { useEffect, useMemo, useState } from 'react';
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
 import L, { latLngBounds, LatLngBoundsExpression, LatLngExpression } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import Markers from './markers';
 
-// let DefaultIcon = L.icon({
-//   iconUrl: '/icon.png',
-//   iconSize: [48, 48],
-//   shadowUrl: '/icon-shadow.png'
-// });
+// function SetViewOnClick({ coords }) {
+//   const map = useMap();
+//   map.setView(coords, map.getZoom());
 
-// L.Marker.prototype.options.icon = DefaultIcon;
+//   return null;
+// }
 
-function SetViewOnClick({ coords }) {
-  const map = useMap();
-  map.setView(coords, map.getZoom());
+// function SetBounds(props) {
+//   const map = useMap();
+//   useEffect(() => {
+//     const markerBounds: LatLngBoundsExpression = [];
+//     props.markers.forEach(marker => {
+//       markerBounds.push([marker.coordinates.longitude, marker.coordinates.latitude])
+//     });
+//     map.fitBounds(markerBounds)
+//   }, [props.data]);
 
-  return null;
-}
+//   return null
+// }
 
-function SetBounds(props) {
+function GetBounds() {
   const map = useMap();
   useEffect(() => {
-    const markerBounds: LatLngBoundsExpression = [];
-    props.markers.forEach(marker => {
-      markerBounds.push([marker.coordinates.longitude, marker.coordinates.latitude])
-    });
-    map.fitBounds(markerBounds)
-  }, [props.data]);
+    console.log(map.getBounds())
+  }, [map]);
+
+  // useEffect(() => {
+  //   map.on('move', onMove)
+  //   return () => {
+  //     map.off('move', onMove)
+  //   }
+  // }, [map, onMove])
 
   return null
 }
 
-const Map = (props) => {
-  const [SelectedMarkerIndex, setSelectedMarkerIndex] = useState<number | null>(null);
 
+const Map = (props) => {
   return (
     <MapContainer
-      center={[40.730610, -73.935242]} zoom={13} scrollWheelZoom={false} style={{ height: '100%', width: "55%" }}>
+      center={[48.210033, 16.363449]} zoom={13} scrollWheelZoom={true} style={{ height: '100%', width: "55%" }}>
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {props.data.map((entry, index) => {
-        return (
-          <Marker
-            icon={new L.Icon({
-              iconUrl: '/icon.png',
-              iconSize: SelectedMarkerIndex === index ? [64, 64] : [48, 48],
-            })}
-            key={entry.name}
-            eventHandlers={{
-              click: () => {
-                setSelectedMarkerIndex(index);
-              },
-            }}
-            position={[
-              entry.coordinates.longitude,
-              entry.coordinates.latitude
-            ]}>
-            {/* <Popup>{entry.name}'s<br />Home</Popup> */}
-          </Marker>
-        )
-      })}
+      <Markers data={props.data} />
+
 
       {/* <SetViewOnClick
         coords={[
@@ -69,7 +58,8 @@ const Map = (props) => {
           props.data[props.index].coordinates.latitude
         ]}
       /> */}
-      <SetBounds markers={props.data} />
+      {/* <SetBounds markers={props.data} /> */}
+      <GetBounds />
     </MapContainer>
   )
 }

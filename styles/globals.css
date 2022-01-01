@@ -29,6 +29,7 @@ a {
 }
 
 input{outline: 2px solid #ddd;}
+nav{height: 50px;}
 
 .flex{display: flex;}
 .flex-col{display: flex;flex-direction:column;}
