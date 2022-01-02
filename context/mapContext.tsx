@@ -2,10 +2,12 @@ import { createContext, useState } from 'react';
 
 interface MapState {
   selectedHoverMarkerId: number
+  propertiesAvailable: any[]
 }
 
 const defaultMapState: MapState = {
   selectedHoverMarkerId: 0,
+  propertiesAvailable: []
 };
 
 const MapContext = createContext<any | undefined>(

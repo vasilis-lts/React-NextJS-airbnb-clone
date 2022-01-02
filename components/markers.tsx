@@ -1,8 +1,13 @@
+import useMapState from '../hooks/useMapState';
 import MapMarker from './Mapmarker';
 
-export default function Markers({ data }) {
+export default function Markers() {
+  const { propertiesAvailable } = useMapState();
+
+  if (!propertiesAvailable) return null;
+
   return (
-    data.map((entry, index) => {
+    propertiesAvailable.map((entry, index) => {
       return (
         <MapMarker entry={entry} />
       )

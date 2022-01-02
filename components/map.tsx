@@ -1,8 +1,10 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
 import L, { latLngBounds, LatLngBoundsExpression, LatLngExpression } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import Markers from './markers';
+import { getProperties } from './MapController';
+import useMapState from '../hooks/useMapState';
 
 // function SetViewOnClick({ coords }) {
 //   const map = useMap();
@@ -26,22 +28,37 @@ import Markers from './markers';
 
 function GetBounds() {
   const map = useMap();
-  useEffect(() => {
-    console.log(map.getBounds())
-  }, [map]);
+  const { setPropertiesAvailable } = useMapState();
 
-  // useEffect(() => {
-  //   map.on('move', onMove)
-  //   return () => {
-  //     map.off('move', onMove)
-  //   }
-  // }, [map, onMove])
+  useEffect(() => {
+    getPropertiesInView(map.getBounds());
+  }, []);
+
+  const onMoveEnd = useCallback(() => {
+    getPropertiesInView(map.getBounds());
+  }, [map])
+
+  useEffect(() => {
+    map.on('moveend', onMoveEnd)
+    return () => {
+      map.off('moveend', onMoveEnd)
+    }
+  }, [map, onMoveEnd])
+
+  async function getPropertiesInView(latLngBounds: L.LatLngBounds) {
+    let res = await getProperties();
+    if (res?.properties?.length) {
+      let propertiesInMapView = res.properties.filter(p => latLngBounds.contains([p.coordinates.longitude, p.coordinates.latitude]));
+      setPropertiesAvailable(propertiesInMapView)
+    }
+  }
 
   return null
 }
 
 
-const Map = (props) => {
+const Map = () => {
+
   return (
     <MapContainer
       center={[48.210033, 16.363449]} zoom={13} scrollWheelZoom={true} style={{ height: '100%', width: "55%" }}>
@@ -49,9 +66,7 @@ const Map = (props) => {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Markers data={props.data} />
-
-
+      <Markers />
       {/* <SetViewOnClick
         coords={[
           props.data[props.index].coordinates.langitude,
@@ -64,4 +79,4 @@ const Map = (props) => {
   )
 }
 
-export default Map
+export default React.memo(Map)

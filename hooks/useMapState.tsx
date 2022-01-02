@@ -8,9 +8,15 @@ const useMapState = () => {
     setState(state => ({ ...state, selectedHoverMarkerId }));
   }
 
+  function setPropertiesAvailable(propertiesAvailable: Record<string, any>[]) {
+    setState(state => ({ ...state, propertiesAvailable }));
+  }
+
   return {
     selectedHoverMarkerId: state.selectedHoverMarkerId,
-    setSelectedHoverMarkerId
+    setSelectedHoverMarkerId,
+    propertiesAvailable: state.propertiesAvailable,
+    setPropertiesAvailable
   }
 
 }

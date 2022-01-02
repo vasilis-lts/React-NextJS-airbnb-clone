@@ -1,0 +1,40 @@
+{
+  "properties": [
+    {
+      "id": 1,
+      "name": "Preiswere Wohnung",
+      "pricePerNight": 39,
+      "coordinates": {
+        "longitude": 48.192103427883985,
+        "latitude": 16.368900854039936
+      }
+    },
+    {
+      "id": 2,
+      "name": "Near the center convenient room",
+      "pricePerNight": 43,
+      "coordinates": {
+        "longitude": 48.201180617995654,
+        "latitude": 16.356884979513303
+      }
+    },
+    {
+      "id": 3,
+      "name": "Bright room in artsy flat",
+      "pricePerNight": 42,
+      "coordinates": {
+        "longitude": 48.18863645868057,
+        "latitude": 16.4028060276171
+      }
+    },
+    {
+      "id": 4,
+      "name": "Private cozy room",
+      "pricePerNight": 41,
+      "coordinates": {
+        "longitude": 48.221947147570326,
+        "latitude": 16.361582358775895
+      }
+    }
+  ]
+}
