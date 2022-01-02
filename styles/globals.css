@@ -37,3 +37,24 @@ nav{height: 50px;}
 
 .text-left{text-align: left;}
 .text-center{text-align: center;}
+
+
+div.leaflet-marker-icon.div-icon{
+  margin-left: -25px!important;
+  text-align: center;
+  border-radius: 12px;
+  width: auto!important;
+  min-width: 40px!important;
+  height: auto!important;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px 6px;
+  -webkit-box-shadow: 1px 1px 8px 0px #000000; 
+  box-shadow: 1px 1px 8px 0px #000000;
+}
+
+div.leaflet-marker-icon.div-icon.div-icon-selected{
+  background: #222;
+  color: #fff;
+}

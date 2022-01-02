@@ -9,7 +9,7 @@ export default function Markers() {
   return (
     propertiesAvailable.map((entry, index) => {
       return (
-        <MapMarker entry={entry} />
+        <MapMarker key={index} entry={entry} />
       )
     })
   )
