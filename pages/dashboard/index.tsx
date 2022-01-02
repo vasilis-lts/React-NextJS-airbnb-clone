@@ -1,10 +1,7 @@
-import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic'
 import Head from '../../components/head';
 import Nav from '../../components/nav';
-import PropertyListItem from '../../components/PropertyListItem';
-import { Box, Stack, Text } from '@chakra-ui/react';
-import useMapState from '../../hooks/useMapState';
+import { Box } from '@chakra-ui/react';
 import PropertiesAvailable from '../../components/PropertiesAvailable';
 
 function HomePage() {

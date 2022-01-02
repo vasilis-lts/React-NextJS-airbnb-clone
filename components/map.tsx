@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
-import L, { latLngBounds, LatLngBoundsExpression, LatLngExpression } from 'leaflet';
+import React, { useCallback, useEffect } from 'react';
+import { MapContainer, TileLayer, useMap } from 'react-leaflet';
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import Markers from './markers';
 import { getProperties } from './MapController';
