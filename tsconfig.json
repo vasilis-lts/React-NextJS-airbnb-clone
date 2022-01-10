@@ -23,7 +23,8 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "components/CamperLinkNav/CamperLinkNav.tsx"
   ],
   "exclude": [
     "node_modules"

@@ -43,7 +43,7 @@ const ProtectedRoute = ({ router, children }) => {
     if (isBrowser() && AuthStatus === 'loggedIn') {
       console.log(router);
       if (router.pathname === "/" || router.pathname === "/login") { // no route is "/"
-        router.push(routes.DASHBOARD);
+        router.push(routes.FRONTPAGE);
       }
     }
 

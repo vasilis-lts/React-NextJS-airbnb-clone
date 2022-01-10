@@ -1,4 +1,5 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400&display=swap');
 
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip{
@@ -10,13 +11,13 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    height: 100%;
+  font-family: 'Lato', sans-serif;
+  height: 100%;
 }
 
 #__next{
   height: 100%;
+  background-color: #e2e2e2;
 }
 
 a {
@@ -28,16 +29,67 @@ a {
   box-sizing: border-box;
 }
 
+img{display: block;}
 input{outline: 2px solid #ddd;}
 nav{height: 50px;}
 
 .flex{display: flex;}
+.ai-center{align-items: center;}
 .flex-col{display: flex;flex-direction:column;}
 .h100{height:100%}
 
 .text-left{text-align: left;}
 .text-center{text-align: center;}
 
+.center{text-align: center;}
+.white{color: #fff;}
+.title1{
+    font-family: Geomanist,sans-serif;
+    font-size: 56px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 67px;
+    white-space: pre-wrap;
+}
+
+.base-button{
+    text-align: center;
+    cursor: pointer;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 24px;
+}
+.base-button.blue {
+    border: none;
+    background-color: #19255b;
+    color: #fff;
+}
+.base-button.green {
+    border: none;
+    background-color: #46ad48;
+    color: #fff;
+}
+.button-content{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.bg-image{
+    width: 100%;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+}
+.cover{
+    width: 100%;
+    display: table;
+    padding: 16px;
+}
 
 div.leaflet-marker-icon.div-icon{
   margin-left: -25px!important;
