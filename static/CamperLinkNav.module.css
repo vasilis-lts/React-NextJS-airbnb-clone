@@ -77,7 +77,7 @@
   }
 
   .nav-right.show{
-    animation: rotateMenu 300ms ease-in-out forwards;
+    animation: rotateMenu 400ms ease-in-out forwards;
     transform-origin: top center;
   }
 
